@@ -17,7 +17,7 @@ var (
 func main() {
 	flag.Parse()
 
-	var pet Tamagochi
+	var pet Tamagotchi
 	err := pet.load()
 	if err != nil {
 		fmt.Println("error loading data: ", err)

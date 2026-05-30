@@ -22,7 +22,7 @@ const (
 	saveFileName string = "save.json"
 )
 
-type Tamagochi struct {
+type Tamagotchi struct {
 	Name       string    `json:"name"`
 	Hunger     float32   `json:"hunger"`
 	Energy     float32   `json:"energy"`
@@ -31,7 +31,7 @@ type Tamagochi struct {
 	IsSleeping bool      `json:"IsSleeping"`
 }
 
-func (t *Tamagochi) timeUpdate() {
+func (t *Tamagotchi) timeUpdate() {
 	daysPassed := int(time.Since(t.SeenAt).Hours() / 24)
 
 	if daysPassed == 0 {
@@ -57,7 +57,7 @@ func (t *Tamagochi) timeUpdate() {
 	t.save(true)
 }
 
-func (t *Tamagochi) sleep() {
+func (t *Tamagotchi) sleep() {
 	if t.IsSleeping {
 		t.IsSleeping = false
 		fmt.Printf("%s is not longer sleeping\n", t.Name)
@@ -70,14 +70,14 @@ func (t *Tamagochi) sleep() {
 	t.save(true)
 }
 
-func (t *Tamagochi) rename(name string) {
+func (t *Tamagotchi) rename(name string) {
 	lastName := t.Name
 	t.Name = name
 	fmt.Printf("%s has been renamed to %s\n", lastName, t.Name)
 	t.save(false)
 }
 
-func (t *Tamagochi) feed() {
+func (t *Tamagotchi) feed() {
 	if t.IsSleeping {
 		fmt.Printf("you can't feed %s while sleeping\n", t.Name)
 		return
@@ -93,7 +93,7 @@ func (t *Tamagochi) feed() {
 	t.save(false)
 }
 
-func (t Tamagochi) status(debug bool) {
+func (t Tamagotchi) status(debug bool) {
 	if !debug {
 		fmt.Printf("name: %s\nhunger: %v\nenergy: %v\nage: %v\nis sleeping: %v\n", t.Name, t.Hunger, t.Energy, t.Age, t.IsSleeping)
 	} else {
@@ -101,7 +101,7 @@ func (t Tamagochi) status(debug bool) {
 	}
 }
 
-func (t *Tamagochi) save(saveTime bool) error {
+func (t *Tamagotchi) save(saveTime bool) error {
 	if saveTime {
 		t.SeenAt = time.Now()
 	}
@@ -113,7 +113,7 @@ func (t *Tamagochi) save(saveTime bool) error {
 	return os.WriteFile(saveFileName, data, 0644)
 }
 
-func (t *Tamagochi) load() error {
+func (t *Tamagotchi) load() error {
 	data, err := os.ReadFile(saveFileName)
 	if err != nil {
 		if os.IsNotExist(err) {
