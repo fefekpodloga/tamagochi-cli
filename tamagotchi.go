@@ -117,7 +117,7 @@ func (t *Tamagotchi) load() error {
 	data, err := os.ReadFile(saveFileName)
 	if err != nil {
 		if os.IsNotExist(err) {
-			fmt.Println("you don't have a tamagochi yet")
+			fmt.Println("you don't have a tamagotchi yet")
 
 			t.Name = defaultName
 			t.Hunger = defaultHunger

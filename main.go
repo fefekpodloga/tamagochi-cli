@@ -7,10 +7,10 @@ import (
 )
 
 var (
-	renameFlag      = flag.String("rename", "", "name your tamagochi")
-	feedFlag        = flag.Bool("feed", false, "feed your tamagochi")
-	sleepFlag       = flag.Bool("sleep", false, "put your tamagochi to sleep")
-	statusFlag      = flag.Bool("status", false, "show your tamagochi's status")
+	renameFlag      = flag.String("rename", "", "name your tamagotchi")
+	feedFlag        = flag.Bool("feed", false, "feed your tamagotchi")
+	sleepFlag       = flag.Bool("sleep", false, "put your tamagotchi to sleep")
+	statusFlag      = flag.Bool("status", false, "show your tamagotchi's status")
 	debugStatusFlag = flag.Bool("debug", false, "status in debug mode")
 )
 
